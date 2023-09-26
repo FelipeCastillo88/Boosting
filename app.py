@@ -2,7 +2,7 @@ import pickle
 import streamlit as st 
 import numpy as np
 from catboost import CatBoostRegressor
-
+import sklearn
 st.title("Modelo Boosting")
 
 st.divider()
