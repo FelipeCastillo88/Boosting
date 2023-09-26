@@ -1,6 +1,7 @@
 import pickle 
 import streamlit as st 
 import numpy as np
+from catboost import CatBoostRegressor
 
 st.title("Modelo Boosting")
 
@@ -14,11 +15,10 @@ lotsize= st.slider("Lotsize",0,20)
 sqrft= st.slider("sqrft",0, 10)
 colonial=st.slider("colonial",0,1)
 
-#with open ("model.pickle",'rb') as doc:
- #   model= pickle.load(doc)
+with open ("model.pkl",'rb') as doc:
+    model= pickle.load(doc)
 
-#print (type(model))
 
-#prediccion =modelo.predict(np.array([[assess, bdrms, lotsize, sqrft, colonial]]))
+prediccion =model.predict(np.array([[assess, bdrms, lotsize, sqrft, colonial]]))
 if st.button("Predecir:"):
-    st.write(f"El precio es de {pediccion[0]}")
+    st.write(f"El precio es de {prediccion[0]}")
